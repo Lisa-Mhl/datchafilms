@@ -1,0 +1,70 @@
+easy_admin:
+  site_name: 'DATCHADMIN'
+  design:
+    menu:
+      - {entity: 'Video', icon: 'video'}
+      - {entity: 'Portfolio', icon: 'folder-open'}
+      - {entity: 'Client', icon: 'briefcase'}
+
+  entities:
+    Video:
+      class: App\Entity\Video
+      list:
+        actions:
+          - { name: 'search', label: 'Rechercher' }
+          - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-primary' }
+          - { name: 'delete', icon: 'trash-alt', label: '', css_class: 'btn btn-danger' }
+          - { name: 'new', icon: 'plus', label: 'Nouvelle Vidéo', css_class: 'btn btn-success' }
+        fields:
+          - { property: 'id', label: 'Id', }
+          - { property: 'title', label: 'Titre', }
+          - { property: 'link', label: 'Lien Viméo'}
+          - 'portfolio'
+          - { property: 'vignette', label: 'Vignette VIDEO'}
+          - { property: 'image', label: 'Vignette IMAGE'}
+          - { property: 'clientName', label: 'Nom du Client'}
+
+      form:
+        fields:
+          - { property: 'title', label: 'Titre'}
+          - 'portfolio'
+          - { property: 'clientName', label: 'Nom du Client'}
+          - { property: 'link', label: 'Lien Viméo'}
+          - { property: 'vignetteFile', type: 'vich_image', label: 'Vignette VIDEO'}
+          - { property: 'imageFile', type: 'vich_image', label: 'Vignette IMAGE'}
+          - { property: 'updatedAt', label: 'Date'}
+
+    Portfolio:
+      class: App\Entity\Portfolio
+      list:
+        actions:
+          - {name: 'search', label: 'Rechercher' }
+          - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-primary' }
+          - { name: 'delete', icon: 'trash-alt', label: '', css_class: 'btn btn-danger' }
+          - { name: 'new', icon: 'plus', label: 'Nouveau Portfolio', css_class: 'btn btn-success' }
+        fields:
+          - { property: 'title', label: 'Titre'}
+          - {property: 'demo', label: 'Lien de la Vidéo Démo'}
+          - {property: 'videos', label: 'Vidéos du Portfolio'}
+
+      form:
+        fields:
+          - {property: 'title', label: 'Titre'}
+          - {property: 'demo', label: 'Démo'}
+          - {property: 'videos', label: 'Vidéos du Portfolio'}
+
+    Client:
+      class: App\Entity\Client
+      list:
+        actions:
+          - {name: 'search', label: 'Rechercher' }
+          - { name: 'edit', icon: 'pencil', label: '', css_class: 'btn btn-primary' }
+          - { name: 'delete', icon: 'trash-alt', label: '', css_class: 'btn btn-danger' }
+          - { name: 'new', icon: 'plus', label: 'Nouveau Client', css_class: 'btn btn-success' }
+        fields:
+          - { property: 'name', label: 'Nom du Client'}
+          - {property: 'videos', label: 'Vidéos du Client'}
+      form:
+        fields:
+          - {property: 'name', label: 'Nom du Client'}
+          - {property: 'videos', label: 'Vidéos du Client'}

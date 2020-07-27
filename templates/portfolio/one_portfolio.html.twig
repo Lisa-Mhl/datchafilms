@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datcha - Portfolio{% endblock %}
+
+    {% block body %}
+
+        <div class="pfCtn">
+            <h2 class="category_title" id="mode">{{ portfolio.title }} </h2>
+            <div class="row">
+                {% for item in videos %}
+                    <div class="col-lg-4 col-md-6 col-sm-7">
+                        <a href="{{ path('player', {'id': item.id}) }}">
+                            <video class="card-img-top" id="pfVideo" src="{{ asset('uploads/files/' ~ item.vignette) }}"
+                                   frameborder="0" muted loop playsinline></video>
+                            <img id="vignetteImg" src="{{ asset('uploads/files/' ~ item.image) }}">
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title client"> {{ item.clientName }}</h3>
+                            <p class=" card-text video_title"> {{ item.title }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    {% endblock %}

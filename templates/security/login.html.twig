@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wesh les zooz{% endblock %}
+
+{% block body %}
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+        {% endif %}
+
+        <fieldset>
+            <div class="logForm">
+                <h1 class="h3 mb-3 font-weight-normal"> Connexion Admin</h1>
+                <label for="inputUsername">Login : </label>
+                <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
+                       required autofocus> <br>
+                <label for="inputPassword">Mot de passe :</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" required>
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" name="_remember_me"> Sauvegarder les infos de connexion
+                    </label>
+                </div>
+
+            </div>
+            <button id="adminbtn" class="btn btn-lg btn-primary" type="submit">
+                Entrer dans la Matrice
+            </button>
+        </fieldset>
+    </form>
+{% endblock %}

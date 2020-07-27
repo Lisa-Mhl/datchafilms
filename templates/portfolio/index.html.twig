@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Datcha{% endblock %}
+
+{% block body %}
+    <article class="category-ctn">
+        {% for item in portfolios %}
+            <div class="video-responsive">
+                <iframe class="video" src="{{ item.demo }}" frameborder="0" allow="autoplay ; fullscreen" allowfullscreen></iframe>
+            </div>
+            <h2 class="category"><a class="link_category" href="/portfolio/{{ item.title }}">{{ item.title }}</a></h2>
+        {% endfor %}
+    </article>
+{% endblock %}

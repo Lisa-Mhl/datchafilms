@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" lang="fr">
+    <meta name="author" content="Lisa Michel">
+    <meta name="description"
+          content="Agence de création audiovisuelle : scénario, direction artistique et réalisation de films. Mode / Société / Artisanat.">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}DATCHA FILMS{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="//db.onlinewebfonts.com/c/ca946c724f81fd4abea2b2df72e4fb20?family=Abadi+MT+Std" rel="stylesheet"
+          type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ asset('images/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('CSS/style.css') }}">
+    {% block stylesheets %}
+    {% endblock %}
+</head>
+
+<div class="home_title" xmlns="http://www.w3.org/1999/html">
+    <a href="{{ path('portfolio') }}"><img class="logo_datcha" src="https://zupimages.net/up/20/21/5ylz.png"
+                                           alt="Logo Datcha"></a>
+    <h3 class="subtitle">SCÉNARIO - DIRECTION ARTISTIQUE - RÉALISATION</h3>
+</div>
+<body>
+
+{% block body %}{% endblock %}
+
+<footer>
+    {% block footer %}
+        <h3 class="contact_title">CONTACTS</h3>
+        <p class="footer_name">Laure Lioret <span class="arapey">&</span> Diane Uzan <br>
+            06.72.11.28.36
+        </p>
+        <div>
+            <a href="https://vimeo.com/user89486657" target="_blank"><img class="logo_footer"
+                                                                          src="https://zupimages.net/up/20/21/a6yp.png"
+                                                                          alt="Logo Viméo"></a>
+            <a href="https://www.instagram.com/datchafilms/" target="_blank"><img class="logo_footer"
+                                                                                  src="https://zupimages.net/up/19/41/sjw7.png"
+                                                                                  alt="Logo Instagram"></a>
+            <a href="mailto:hello@datchafilms.com"><img class="logo_footer"
+                                                        src="https://zupimages.net/up/20/21/0plg.png"
+                                                        alt="Icone Mail"></a>
+        </div>
+    {% endblock %}
+</footer>
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.col-lg-4').each(function (i, obj) {
+                $(this).on("mouseover", function () {
+                    hoverVideo(i);
+                });
+                $(this).on("mouseout", function () {
+                    hideVideo(i);
+                });
+            });
+        });
+
+        function hoverVideo(i) {
+            $('.card-img-top')[i].play();
+        }
+
+        function hideVideo(i) {
+            $('.card-img-top')[i].currentTime = 0;
+            $('.card-img-top')[i].pause();
+        }
+    </script>
+{% endblock %}
+
+</body>
+</html>
